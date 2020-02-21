@@ -104,6 +104,51 @@ const gitCardComponent = followersArray => {
   return card;
 };
 
+axios
+  .get("https://api.github.com/users/tetondan")
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+axios
+  .get("https://api.github.com/users/dustinmyers")
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+axios
+  .get("https://api.github.com/users/justsml")
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+axios
+  .get("https://api.github.com/users/luishrd")
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+axios
+  .get("https://api.github.com/users/bigknell")
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
