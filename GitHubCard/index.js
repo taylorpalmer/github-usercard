@@ -2,7 +2,7 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-// console.log(axios);
+console.log(axios);
 axios
   .get("https://api.github.com/users/taylorpalmer")
   .then(data => {
@@ -55,12 +55,12 @@ const followersArray = [];
 
 */
 
-const gitCardComponent = array => {
+const gitCardComponent = followersArray => {
   const card = document.createElement("div");
   card.classList.add("card");
 
   const image = document.createElement("img");
-  image.src = {};
+  image.src = `${data.avatar_url}`;
   card.appendChild(image);
 
   const cardInfo = document.createElement("div");
@@ -69,33 +69,36 @@ const gitCardComponent = array => {
 
   const name = document.createElement("h3");
   name.classList.add("name");
+  name.textContent = `${data.name}`;
   cardInfo.appendChild(name);
 
   const username = document.createElement("p");
   username.classList.add("username");
+  username.textContent = `${data.login}`;
   cardInfo.appendChild(username);
 
   const location = document.createElement("p");
-  location.textContent = "Location: ${}";
+  location.textContent = `Location: ${data.location}`;
   cardInfo.appendChild(location);
 
   const profile = document.createElement("p");
-  profile.textContent = "Profile: ${}";
+  profile.textContent = `Profile: `;
   cardInfo.appendChild(profile);
 
   const profileLink = document.createElement("a");
+  profileLink.textContent = `href: ${data.url}`;
   profile.appendChild(profileLink);
 
   const followers = document.createElement("p");
-  followers.textContent = "Followers: ${}";
+  followers.textContent = `Followers: ${data.followers}`;
   cardInfo.appendChild(followers);
 
   const following = document.createElement("p");
-  following.textContent = "Following: ${}";
+  following.textContent = `Following: ${data.following}`;
   cardInfo.appendChild(following);
 
   const bio = document.createElement("p");
-  bio.textContent = "Bio: ${}";
+  bio.textContent = `Bio: ${data.bio}`;
   cardInfo.appendChild(bio);
 
   return card;
