@@ -33,7 +33,7 @@ axios
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [tetondan, dustinmyers, justsml, luishrd, bigknell];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -55,7 +55,7 @@ const followersArray = [];
 
 */
 
-const gitCardComponent = followersArray => {
+const cardComponent = followersArray => {
   const card = document.createElement("div");
   card.classList.add("card");
 
@@ -82,12 +82,8 @@ const gitCardComponent = followersArray => {
   cardInfo.appendChild(location);
 
   const profile = document.createElement("p");
-  profile.textContent = `Profile: `;
+  profile.textContent = `Profile: ${data.url}`;
   cardInfo.appendChild(profile);
-
-  const profileLink = document.createElement("a");
-  profileLink.textContent = `href: ${data.url}`;
-  profile.appendChild(profileLink);
 
   const followers = document.createElement("p");
   followers.textContent = `Followers: ${data.followers}`;
@@ -104,51 +100,66 @@ const gitCardComponent = followersArray => {
   return card;
 };
 
-axios
-  .get("https://api.github.com/users/tetondan")
-  .then(data => {
-    console.log(data);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// axios
+//   .get("https://api.github.com/users/tetondan")
+//   .then(data => {
+//     console.log(data);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
-axios
-  .get("https://api.github.com/users/dustinmyers")
-  .then(data => {
-    console.log(data);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// axios
+//   .get("https://api.github.com/users/dustinmyers")
+//   .then(data => {
+//     console.log(data);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
-axios
-  .get("https://api.github.com/users/justsml")
-  .then(data => {
-    console.log(data);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// axios
+//   .get("https://api.github.com/users/justsml")
+//   .then(data => {
+//     console.log(data);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
-axios
-  .get("https://api.github.com/users/luishrd")
-  .then(data => {
-    console.log(data);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// axios
+//   .get("https://api.github.com/users/luishrd")
+//   .then(data => {
+//     console.log(data);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
-axios
-  .get("https://api.github.com/users/bigknell")
-  .then(data => {
-    console.log(data);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// axios
+//   .get("https://api.github.com/users/bigknell")
+//   .then(data => {
+//     console.log(data);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
+const cards = document.querySelector(".cards");
+followersArray.forEach(currentUser => {
+  const newCard = cardComponent(
+    currentUser.image,
+    currentUser.cardInfo,
+    currentUser.name,
+    currentUser.username,
+    currentUser.location,
+    currentUser.profile,
+    currentUser.followers,
+    currentUser.following,
+    currentUser.bio
+  );
+  cards.appendChild(newCard);
+});
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
