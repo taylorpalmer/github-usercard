@@ -2,9 +2,15 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-
-Axios.get("https://api.github.com/users.taylorpalmer");
-console.log(Axios);
+// console.log(axios);
+axios
+  .get("https://api.github.com/users/taylorpalmer")
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.log(err);
+  });
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -48,6 +54,52 @@ const followersArray = [];
 </div>
 
 */
+
+const gitCardComponent = array => {
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  const image = document.createElement("img");
+  image.src = {};
+  card.appendChild(image);
+
+  const cardInfo = document.createElement("div");
+  cardInfo.classList.add("card-info");
+  card.appendChild(cardInfo);
+
+  const name = document.createElement("h3");
+  name.classList.add("name");
+  cardInfo.appendChild(name);
+
+  const username = document.createElement("p");
+  username.classList.add("username");
+  cardInfo.appendChild(username);
+
+  const location = document.createElement("p");
+  location.textContent = "Location: ${}";
+  cardInfo.appendChild(location);
+
+  const profile = document.createElement("p");
+  profile.textContent = "Profile: ${}";
+  cardInfo.appendChild(profile);
+
+  const profileLink = document.createElement("a");
+  profile.appendChild(profileLink);
+
+  const followers = document.createElement("p");
+  followers.textContent = "Followers: ${}";
+  cardInfo.appendChild(followers);
+
+  const following = document.createElement("p");
+  following.textContent = "Following: ${}";
+  cardInfo.appendChild(following);
+
+  const bio = document.createElement("p");
+  bio.textContent = "Bio: ${}";
+  cardInfo.appendChild(bio);
+
+  return card;
+};
 
 /* List of LS Instructors Github username's: 
   tetondan
