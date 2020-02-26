@@ -8,7 +8,8 @@ axios
   .get("https://api.github.com/users/taylorpalmer")
   .then(response => {
     console.log(response.data);
-    // let gitCard =
+    const newCard = cardComponent(response.data);
+    cards.appendChild(newCard);
   })
   .catch(err => {
     console.log(err);
