@@ -1,3 +1,4 @@
+// @ts-check
 /* Step 1: using axios, send a GET request to the following URL 
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
@@ -5,8 +6,9 @@
 console.log(axios);
 axios
   .get("https://api.github.com/users/taylorpalmer")
-  .then(data => {
-    console.log(data);
+  .then(response => {
+    console.log(response.data);
+    // let gitCard =
   })
   .catch(err => {
     console.log(err);
@@ -33,7 +35,13 @@ axios
           user, and adding that card to the DOM.
 */
 
-const followersArray = [tetondan, dustinmyers, justsml, luishrd, bigknell];
+const followersArray = [
+  "tetondan",
+  "dustinmyers",
+  "justsml",
+  "luishrd",
+  "bigknell"
+];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -55,7 +63,7 @@ const followersArray = [tetondan, dustinmyers, justsml, luishrd, bigknell];
 
 */
 
-const cardComponent = followersArray => {
+const cardComponent = data => {
   const card = document.createElement("div");
   card.classList.add("card");
 
@@ -100,66 +108,20 @@ const cardComponent = followersArray => {
   return card;
 };
 
-// axios
-//   .get("https://api.github.com/users/tetondan")
-//   .then(data => {
-//     console.log(data);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
-
-// axios
-//   .get("https://api.github.com/users/dustinmyers")
-//   .then(data => {
-//     console.log(data);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
-
-// axios
-//   .get("https://api.github.com/users/justsml")
-//   .then(data => {
-//     console.log(data);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
-
-// axios
-//   .get("https://api.github.com/users/luishrd")
-//   .then(data => {
-//     console.log(data);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
-
-// axios
-//   .get("https://api.github.com/users/bigknell")
-//   .then(data => {
-//     console.log(data);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
-
 const cards = document.querySelector(".cards");
-followersArray.forEach(currentUser => {
-  const newCard = cardComponent(
-    currentUser.image,
-    currentUser.cardInfo,
-    currentUser.name,
-    currentUser.username,
-    currentUser.location,
-    currentUser.profile,
-    currentUser.followers,
-    currentUser.following,
-    currentUser.bio
-  );
-  cards.appendChild(newCard);
+followersArray.forEach(username => {
+  axios
+    .get(`https://api.github.com/users/${username}`)
+    .then(response => {
+      console.log(response.data);
+      const newCard = cardComponent(response.data);
+      cards.appendChild(newCard);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 });
+
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
